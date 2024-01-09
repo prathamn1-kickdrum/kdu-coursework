@@ -1,42 +1,51 @@
 package org.example.question1;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Stack;
+import java.util.List;
 
+/**
+ * The `StudentUtility` class provides utility methods for calculating GPAs and retrieving students based on GPA range.
+ */
 public class StudentUtility {
 
-    static HashMap<Character,Integer> gradeMap;
+    // Mapping of grades to corresponding grade points
+    private static final Grades gradeObj = new Grades();
 
-    StudentUtility() {
-        gradeMap = new HashMap<>();
-        gradeMap.put('A',4);
-        gradeMap.put('B',3);
-        gradeMap.put('C',2);
-    }
+    /**
+     * Constructor to initialize the gradeMap.
+     */
 
+    /**
+     * Calculates the GPA for a set of grades.
+     */
     public static double getGpa(char[] grades) {
-        double totalMarks=0;
+        double totalMarks = 0;
         for (char grade : grades) {
-            totalMarks += gradeMap.get(grade);
+            totalMarks += gradeObj.getGradeValue(grade);
         }
-        System.out.println(totalMarks);
-        return totalMarks/grades.length;
+        return totalMarks / grades.length;
     }
+
+    /**
+     * Calculates the GPAs for a list of students.
+     */
     public static double[] calculateGPA(int[] studentIdList, char[][] studentsGrades) {
         int noOfStudents = studentIdList.length;
         double[] studentGpa = new double[noOfStudents];
-        for(int i=0;i<noOfStudents;i++) {
+        for (int i = 0; i < noOfStudents; i++) {
             studentGpa[i] = getGpa(studentsGrades[i]);
         }
         return studentGpa;
     }
 
-    ArrayList<Integer> getStudentsByGPA(double lower, double higher, int[] studentListId, char[][] studentsGrades) {
-        double[] studentGpas = calculateGPA(studentListId, studentsGrades);
-        ArrayList<Integer> validStudentIdList = new ArrayList<>();
-        for(int i=0;i<studentListId.length;i++) {
-            if(studentGpas[i]>=lower && studentGpas[i]<=higher) {
+    /**
+     * Retrieves the list of student IDs within the specified GPA range.
+     */
+    List<Integer> getStudentsByGPA(double lower, double higher, int[] studentListId, char[][] studentsGrades) {
+        double[] studentGpaArr = calculateGPA(studentListId, studentsGrades);
+        List<Integer> validStudentIdList = new ArrayList<>();
+        for (int i = 0; i < studentListId.length; i++) {
+            if (studentGpaArr[i] >= lower && studentGpaArr[i] <= higher) {
                 validStudentIdList.add(studentListId[i]);
             }
         }

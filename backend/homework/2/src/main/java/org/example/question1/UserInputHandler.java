@@ -4,45 +4,64 @@ import org.example.logging.Logger;
 
 import java.util.Scanner;
 
+/**
+ * The `UserInputHandler` class handles user input for student-related information.
+ */
 public class UserInputHandler {
 
-    Logger logger = new Logger();
+    // Logger instance for logging messages
+    Logger loggerObj = new Logger();
+
+    // Scanner instance for reading user input
     Scanner reader = new Scanner(System.in);
+
+    /**
+     * Reads and validates the input for student ID.
+     */
     public int readId(int index) {
         int id = -1;
         while (id == -1) {
             try {
-                logger.userPrompt("Enter Student Id for " + index + " student : ");
+                // Prompt user for student ID
+                loggerObj.userPrompt("Enter Student ID for student " + index + ": ");
                 id = reader.nextInt();
+
+                // Validate that the ID is a positive integer
                 if (id <= 0) {
-                    throw new IllegalArgumentException("Id can't be negative");
+                    throw new IllegalArgumentException("ID cannot be negative");
                 }
             } catch (NumberFormatException e) {
-                logger.errorLog("Invalid Student Id", e);
-                id=-1;
+                loggerObj.errorLog("Invalid Student ID", e);
+                id = -1;
             } catch (IllegalArgumentException e) {
-                logger.errorLog(e.getMessage());
-                id=-1;
+                loggerObj.errorLog(e.getMessage());
+                id = -1;
             }
         }
         return id;
     }
 
+    /**
+     * Reads and validates the input for student grade.
+     */
     public char readGrade(int index) {
         char grade = ' ';
         while (grade == ' ') {
             try {
-                logger.userPrompt("Enter grade " + index + " : ");
+                // Prompt user for student grade
+                loggerObj.userPrompt("Enter grade " + index + ": ");
                 grade = reader.next().charAt(0);
-                if (grade<'A' || grade>'C') {
-                    throw new IllegalArgumentException("grade must be A or B or C");
+
+                // Validate that the grade is 'A', 'B', or 'C'
+                if (grade < 'A' || grade > 'C') {
+                    throw new IllegalArgumentException("Grade must be 'A', 'B', or 'C'");
                 }
             } catch (NumberFormatException e) {
-                logger.errorLog("Invalid Grade", e);
-                grade=' ';
+                loggerObj.errorLog("Invalid Grade", e);
+                grade = ' ';
             } catch (IllegalArgumentException e) {
-                logger.errorLog(e.getMessage());
-                grade=' ';
+                loggerObj.errorLog(e.getMessage());
+                grade = ' ';
             }
         }
         return grade;
