@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 
 public class Main {
-    private static Logger logger = new Logger();
+    private static final Logger logger = new Logger();
     public static void addStudent(StudentRepository studentRepo, UserInputHandler userInput) {
         InputValidators validInput = new InputValidators();
         int id,age;
