@@ -1,6 +1,7 @@
 package org.example;
 
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -29,8 +30,9 @@ public class UserInputHandler {
                 if (num <= 0) {
                     throw new IllegalArgumentException("num cannot be negative");
                 }
-            } catch (NumberFormatException e) {
+            } catch (InputMismatchException e) {
                 loggerObj.errorLog("Invalid Number", e);
+                reader.nextLine();
                 num = -1;
             } catch (IllegalArgumentException e) {
                 loggerObj.errorLog(e.getMessage());

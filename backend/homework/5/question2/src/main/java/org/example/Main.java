@@ -5,9 +5,8 @@ import java.util.concurrent.Executors;
 
 public class Main {
     public static void main(String[] args) {
-        Logger loggerObj = Logger.getLoggerObject();
         MessageQueue messageQueue = new MessageQueue();
-
+        Logger loggerObj = Logger.getLoggerObject();
         ExecutorService senderThreadPool = Executors.newFixedThreadPool(3);
         ExecutorService receiverThreadPool = Executors.newFixedThreadPool(3);
 
@@ -20,8 +19,8 @@ public class Main {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+            Thread.currentThread().interrupt();
+            loggerObj.errorLog("Thread interrupted",e);        }
 
         senderThreadPool.shutdown();
         receiverThreadPool.shutdown();

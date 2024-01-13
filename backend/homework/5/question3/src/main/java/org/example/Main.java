@@ -21,8 +21,8 @@ public class Main {
             factorialThread.join();
             factorsThread.join();
         } catch (InterruptedException e) {
-            loggerObj.errorLog(e.getMessage());
-        }
+            Thread.currentThread().interrupt();
+            loggerObj.errorLog("Thread interrupted",e);        }
 
         loggerObj.debugLog("Main thread finished last.");
     }

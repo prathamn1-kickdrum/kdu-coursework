@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 class MessageReceiver implements Runnable {
     private final String name;
     Logger loggerObj = Logger.getLoggerObject();
@@ -34,7 +32,8 @@ class MessageReceiver implements Runnable {
         try {
             receiveMessages();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            Thread.currentThread().interrupt();
+            loggerObj.errorLog("Thread interrupted",e);
         }
     }
 }
