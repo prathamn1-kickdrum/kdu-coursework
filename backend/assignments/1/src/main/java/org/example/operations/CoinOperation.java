@@ -38,7 +38,10 @@ public class CoinOperation {
     }
 
     public void printCoinDetailsByCode(String code) {
-        loggerObj.infoLog("Coin Details", getCoinByCode(code));
+        Coins myCoin = getCoinByCode(code);
+        if(myCoin!=null) {
+            loggerObj.infoLog("Coin Details : "+ myCoin);
+        }
     }
 
     public void printCoinDetailsByName(String name) {
@@ -47,7 +50,7 @@ public class CoinOperation {
             return;
         }
         Coins myCoin = coinsList.get(coinNameMap.get(name));
-        loggerObj.infoLog("Coin Details : ",myCoin);
+        loggerObj.infoLog("Coin Details : "+myCoin.toString());
     }
 
     public static Coins getCoinByCode(String code) {
@@ -58,7 +61,7 @@ public class CoinOperation {
         return coinsList.get(coinCodeMap.get(code));
     }
 
-    public void displayTopCoinsByPrice(int N) {
+    public void displayTopCoinsByPrice(int n) {
         List<Coins> topCoins = coinsList.stream()
                 .sorted(Comparator.comparingDouble(Coins::getCoinPrice).reversed())
                 .toList();
@@ -66,7 +69,7 @@ public class CoinOperation {
         int counter = 1;
         for(Coins myCoin : topCoins) {
             loggerObj.infoLog(counter + myCoin.toString());
-            if(counter==N) {
+            if(counter==n) {
                 break;
             }
             counter++;

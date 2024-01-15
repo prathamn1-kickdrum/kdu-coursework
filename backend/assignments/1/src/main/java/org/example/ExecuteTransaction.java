@@ -22,12 +22,14 @@ public class ExecuteTransaction implements Runnable{
     private long volume;
     private String walletAddress;
     private Traders trader;
+    private final Object monitor = new Object();
     Logger loggerObj = Logger.getLoggerObject();
 
     public ExecuteTransaction(JsonNode transactionJson, CountDownLatch latch) {
         this.type = transactionJson.get("type").asText();
         this.latch = latch;
         this.coin = CoinOperation.getCoinByCode(transactionJson.get("data").get("coin").asText());
+        assert coin != null;
         this.coinCode = coin.getCoinSymbol();
 
         if(transactionJson.get("data").get("wallet_address")!=null) {
@@ -53,22 +55,21 @@ public class ExecuteTransaction implements Runnable{
 
     }
     private String getBlockHash() {
-        String SALT_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        String saltChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder transactionHash = new StringBuilder();
-        for (double i = 0; i < 199999999; i++) {
-            i++;
-            i--;
+        for (int i = 0; i < 199999999; i++) {
+            if(i==199999998) break;
         }
         while (transactionHash.length() < 128) {
-            int index = (int) (rnd.nextFloat() * SALT_CHARS.length());
-            transactionHash.append(SALT_CHARS.charAt(index));
+            int index = rnd.nextInt() * saltChars.length();
+            transactionHash.append(saltChars.charAt(index));
         }
         String hashCode = transactionHash.toString();
         return "0x" + hashCode.toLowerCase();
     }
 
 
-    private  synchronized void buyTransaction() {
+    private synchronized void buyTransaction() {
         while (true) {
             if (coin.getCoinVolume() >= quantity) {
                 coin.updateCoinVolume(-quantity);
@@ -76,16 +77,19 @@ public class ExecuteTransaction implements Runnable{
                 trader.updateNetMoney(-quantity * coin.getCoinPrice());
                 break;
             }
+
             try {
-                Thread.sleep(10);
+                // Release the lock and wait for a notification or a timeout
+                monitor.wait(10);
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
                 loggerObj.errorLog(e.getMessage(), e);
             }
         }
     }
 
     private synchronized void sellTransaction() {
-        while(true){
+        while (true) {
             if (trader.getCoinVolume(coinCode) >= quantity) {
                 coin.updateCoinVolume(quantity);
                 trader.updatePortfolioCoinVolume(coinCode, -quantity);
@@ -93,8 +97,10 @@ public class ExecuteTransaction implements Runnable{
                 break;
             }
             try {
-                Thread.sleep(10);
+                // Release the lock and wait for a notification or a timeout
+                monitor.wait(10);
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
                 loggerObj.errorLog(e.getMessage(), e);
             }
         }
@@ -114,6 +120,7 @@ public class ExecuteTransaction implements Runnable{
             case "SELL" -> sellTransaction();
             case "ADD_VOLUME" -> addVolumeTransaction();
             case "UPDATE_PRICE" -> updatePriceTransaction();
+            default -> loggerObj.debugLog("Invalid Transaction Type");
         }
     }
 

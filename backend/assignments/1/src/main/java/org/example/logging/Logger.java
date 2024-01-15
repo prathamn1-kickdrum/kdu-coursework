@@ -42,7 +42,5 @@ public class Logger {
         loggerVar.error(msg, e);
     }
 
-    public void infoLog(String msg,Object o) {loggerVar.info(msg+o.toString());}
-
     public void infoLog(String msg) {loggerVar.info(msg);}
 }

@@ -38,12 +38,14 @@ public class TraderOperation {
     }
 
     public void displayTraderPortfolio(String walletAddress) {
-        getTraderByWallet(walletAddress).printPortfolio();
+        Traders trader = getTraderByWallet(walletAddress);
+        if(trader!=null) trader.printPortfolio();
     }
 
     public void displayProfitOrLoss(String walletAddress) {
-
-        double netIncome = getTraderByWallet(walletAddress).getNetIncome();
+        Traders trader = getTraderByWallet(walletAddress);
+        if(trader==null) return;
+        double netIncome = trader.getNetIncome();
         if(netIncome<0) {
             loggerObj.infoLog("Loss : " + Math.abs(netIncome));
         }else {
@@ -57,20 +59,20 @@ public class TraderOperation {
             loggerObj.infoLog(counter+item.toString());
         }
     }
-    public void displayTradersTopBottom(int N) {
-        List<Traders> topNTraders = findTopNTraders(tradersList, N, Comparator.comparingDouble(Traders::getNetIncome));
-        loggerObj.infoLog("Top "+N+" traders : ");
+    public void displayTradersTopBottom(int n) {
+        List<Traders> topNTraders = findTopNTraders(tradersList, n, Comparator.comparingDouble(Traders::getNetIncome));
+        loggerObj.infoLog("Top "+n+" traders : ");
         printTraderList(topNTraders);
-        List<Traders> bottomNTraders = findTopNTraders(tradersList, N, Comparator.comparingDouble(Traders::getNetIncome).reversed());
-        loggerObj.infoLog("Bottom "+N+" traders : ");
+        List<Traders> bottomNTraders = findTopNTraders(tradersList, n, Comparator.comparingDouble(Traders::getNetIncome).reversed());
+        loggerObj.infoLog("Bottom "+n+" traders : ");
         printTraderList(bottomNTraders);
     }
 
-    private List<Traders> findTopNTraders(List<Traders> traders, int N, Comparator<Traders> comparator) {
+    private List<Traders> findTopNTraders(List<Traders> traders, int n, Comparator<Traders> comparator) {
         PriorityQueue<Traders> priorityQueue = new PriorityQueue<>(comparator);
         for (Traders trader : traders) {
             priorityQueue.offer(trader);
-            if (priorityQueue.size() > N) {
+            if (priorityQueue.size() > n) {
                 priorityQueue.poll();
             }
         }

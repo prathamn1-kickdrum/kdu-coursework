@@ -57,11 +57,14 @@ public class Main {
     }
 
     public static void executeTransactions(JsonNode jsonTransactions, CountDownLatch latch) {
+        if(jsonTransactions==null) {
+            throw new NullPointerException();
+        }
         CoinOperation.loadCoinsData();
         TraderOperation.loadTradersData();
 
-        int NUM_OF_THREADS = jsonTransactions.size();
-        ExecutorService executorService = Executors.newFixedThreadPool(NUM_OF_THREADS);
+        int numOfThreads = jsonTransactions.size();
+        ExecutorService executorService = Executors.newFixedThreadPool(numOfThreads);
 
         for (JsonNode trRecord : jsonTransactions) {
             executorService.submit(new ExecuteTransaction(trRecord, latch));
@@ -76,20 +79,25 @@ public class Main {
         CoinOperation coinOpObj = new CoinOperation();
         while(true) {
             int operationOp = userMenu.coinMenu();
+            if(operationOp==-1) {
+                break;
+            }
             switch (operationOp) {
                 case 1:
                     String coinName = inputHandler.readName("Enter Coin Name");
                     coinOpObj.printCoinDetailsByName(coinName);
+                    break;
                 case 2:
                     String coinCode = inputHandler.readName("Enter Coin Code (All caps");
                     coinOpObj.printCoinDetailsByCode(coinCode);
+                    break;
                 case 3:
                     int topN = inputHandler.readNum("Enter N : ");
                     coinOpObj.displayTopCoinsByPrice(topN);
-                case -1:
                     break;
                 default:
-                    loggerObj.errorLog("Enter valid operation number");
+                    loggerObj.errorLog("Wrong Choice. Try Again");
+                    break;
             }
         }
     }
@@ -100,20 +108,25 @@ public class Main {
         TraderOperation traderOpObj = new TraderOperation();
         while(true) {
             int operationOp = userMenu.traderMenu();
+            if(operationOp==-1) {
+                break;
+            }
             String wallet;
             switch (operationOp) {
                 case 1:
                     wallet = inputHandler.readName("Enter wallet Address");
                     traderOpObj.displayTraderPortfolio(wallet);
+                    break;
                 case 2:
                     wallet = inputHandler.readName("Enter wallet Address");
                     traderOpObj.displayProfitOrLoss(wallet);
+                    break;
                 case 3:
                     traderOpObj.displayTradersTopBottom(5);
-                case -1:
                     break;
                 default:
                     loggerObj.errorLog("Enter valid operation number");
+                    break;
             }
         }
 
@@ -123,15 +136,19 @@ public class Main {
         UserUtilityMenu userMenu = UserUtilityMenu.getUserUtilityMenuObject();
         while(true) {
             int operationOp = userMenu.operationMenu();
+            if(operationOp==-1) {
+                break;
+            }
             switch (operationOp) {
                 case 1:
                     coinUserInteraction();
+                    break;
                 case 2:
                     traderUserInteraction();
-                case -1:
                     break;
                 default:
                     loggerObj.errorLog("Enter valid operation number");
+                    break;
             }
         }
     }
@@ -139,13 +156,19 @@ public class Main {
     public static void main(String[] args) {
         try {
             JsonNode jsonTransactions = parseJsonFile(String.valueOf(TRANSACTION_JSON_FILE_PATH));
-            int LATCH_COUNT = jsonTransactions.size();
-            CountDownLatch latch = new CountDownLatch(LATCH_COUNT);
+            int latchCount=0;
+            if(jsonTransactions!=null) {
+                latchCount = jsonTransactions.size();
+            }
+            CountDownLatch latch = new CountDownLatch(latchCount);
 
             executeTransactions(jsonTransactions, latch);
             userInteraction();
             latch.await();
+        }catch (NullPointerException e) {
+            loggerObj.errorLog("Error in parsing json file",e);
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             loggerObj.errorLog(e.getMessage(), e);
         }
     }
