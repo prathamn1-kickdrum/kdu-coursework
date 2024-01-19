@@ -84,6 +84,12 @@ public class Player {
     public void setWickets(int wickets) {
         this.wickets = wickets;
     }
+
+    @Override
+    public String toString() {
+            return "\nName : "+name+"\nTeam : "+team.toString()+"\nWickets : "+wickets+"\nRole : "+role.toString()+"\nruns : "+runs+"\n";
+    }
+    
 }
 
 

@@ -2,7 +2,7 @@ package org.example.model;
 
 public enum PlayerRole {
     ALL_ROUNDER,
-    BATSMEN,
+    BATSMAN,
     WICKET_KEEPER,
     BOWLER
 }
