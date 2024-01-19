@@ -11,9 +11,6 @@ import org.apache.commons.csv.CSVRecord;
 import org.example.logging.Logger;
 
 public class LoadData {
-
-    private LoadData() {}
-
     public static ArrayList<String[]> parseCSV(Path fileCsvPath) {
         Logger loggerObj = Logger.getLoggerObject();
         ArrayList<String[]> csvList = new ArrayList<>();
