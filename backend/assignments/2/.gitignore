@@ -13,11 +13,18 @@ target/
 .springBeans
 .sts4-cache
 
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
+
+### Maven ###
+mvnw.cmd
+mvnw
+*.properties
+
 
 ### NetBeans ###
 /nbproject/private/
@@ -37,3 +44,4 @@ build/
 ._.DS_Store
 **/.DS_Store
 **/._.DS_Store
+
