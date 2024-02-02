@@ -1,13 +1,11 @@
 package com.example.spring.handson.controller;
 
 
-import com.example.jdbc.dto.*;
 import com.example.spring.handson.dto.*;
 import com.example.spring.handson.model.Shift;
 import com.example.spring.handson.model.ShiftType;
 import com.example.spring.handson.model.ShiftUser;
 import com.example.spring.handson.model.User;
-import com.example.jdbc.service.*;
 import com.example.spring.handson.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
