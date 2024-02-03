@@ -15,21 +15,22 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 @Service
 public class AllService {
-
-
     private final UserDAO userDAO;
     private final ShiftDAO shiftDAO;
     private final ShiftTypeDAO shiftTypeDAO;
     private final ShiftUserDAO shiftUserDAO;
-
+    private final UserService userService;
+    private final ShiftTypeService shiftTypeService;
+    private final ShiftService shiftService;
+    private final ShiftUserService shiftUserService;
     public void addAll(AllDTO allDTO) {
-        UserService userService = new UserService();
+
         User user = userService.mapUserDTOToUser(allDTO.getUserDTO());
-        ShiftTypeService shiftTypeService = new ShiftTypeService();
+
         ShiftType shiftType = shiftTypeService.mapShiftTypeDTOToShiftType(allDTO.getShiftTypeDTO());
-        ShiftService shiftService = new ShiftService();
+
         Shift shift = shiftService.mapShiftDTOToShift(allDTO.getShiftDTO());
-        ShiftUserService shiftUserService = new ShiftUserService();
+
         ShiftUser shiftUser = shiftUserService.mapShiftUserDTOToShiftUser(allDTO.getShiftUserDTO());
 
         userDAO.saveUser(user);
