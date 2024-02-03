@@ -3,8 +3,6 @@ package com.example.spring.handson.controller;
 import com.example.spring.handson.entity.*;
 import com.example.spring.handson.exception.custom.ShiftUserNotFound;
 import com.example.spring.handson.service.*;
-import com.example.springjpa.entity.*;
-import com.example.springjpa.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

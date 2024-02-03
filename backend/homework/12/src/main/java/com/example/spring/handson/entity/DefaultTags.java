@@ -22,7 +22,7 @@ public class DefaultTags {
     @Column(name = "created_by")
     private String createdBy;
 
-    @Column(name = "updated_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "updated_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp updatedAt;
 
     @Column(name = "updated_by")
