@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap');
+
+
+
+/***********************
+        RESET CSS
+***********************/
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  font-family: 'Lato', sans-serif;
+ -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+#root, #__next {
+  isolation: isolate;
+}
+
+/**********************
+        HEADER
+**********************/
+
+.main-header {
+
+    background-image: url('./assets/images/Home-Header-Opt-1-Dark.png');
+    height: 665px;
+
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 20px;
+    justify-content: center;
+    padding: 29px;
+    
+}
+
+.nav-item {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nav-link {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.78px;
+    text-decoration: none;
+    line-height: 16px;
+}
+
+
+.logo {
+    width: 160px;
+    height: 32px;
+}
+
+.header-banner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: max-content;
+    margin: auto;
+}
+
+.header-banner h3 {
+    line-height: 54px;
+    font-size: 36px;
+    color: white;
+}
+
+.header-banner h1 {
+    line-height: 77px;
+    font-size: 77px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.header-banner h2 {
+    line-height: 54px;
+    font-size: 36px;
+    text-align: start;
+    color: white;
+}
+
+.header-banner-container {
+    margin-top: 95px;
+}
+
+.section-info article h2 {
+    line-height: 48px;
+    font-size: 32px;
+    color: #130739;
+    margin-bottom: 10px;
+}
+
+.section-info article ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 68px;
+    padding: 0;
+}
+
+
+p>span {
+    font-weight: 700;
+}
+
+.section-info article {
+    max-width: 576px;
+}
+
+.section-info article p {
+    max-width: 663px;
+    font-size: 18px;
+    opacity: 60%;
+}
+
+.section-info-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1080px;
+    margin: 80px auto;
+    gap: 40px;
+}
+
+.finance-stats h1 {
+    font-size: 70px;
+    color: #26266d;
+    text-align: center;
+}
+
+.finance-stats p {
+    font-size: 18px;
+    text-align: center;
+}
+
+.finance-stats ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.section-testimonial article {
+    max-width: 1046px;
+    margin: auto;
+    display: flex;
+    gap: 121px;
+
+}
+
+.section-testimonial q {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.section-testimonial article figure {
+    max-width: 184px;
+    aspect-ratio: 1;
+    display: flex;
+    gap: 10px;
+    align-self: center;
+    flex-direction: column;
+}
+
+.section-testimonial article img {
+    border-radius: 50%;
+}
+
+.section-testimonial {
+    background-image: url(./assets/images/Diligence-Header-Opt-3.png);
+    height: 903px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.section-testimonial div {
+    max-width: 750px;
+}
+
+.insert-line :after {
+    content: "";
+    width: 67px;
+    display: block;
+    height: 2px;
+    background-color: red;
+    margin-top: 20px;
+}
+
+.service-button {
+    color: #ff343c;
+    border: 4px solid #ff343c;
+    padding: 13px 26px;
+    background-color: transparent;
+    font-weight: 700;
+
+}
+
+.service-button:hover {
+    background-color: #ff343c;
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+.section-info-2 {
+    background-color: #130739;
+    padding: 20px 0px;
+}
+
+.section-info-2 article h2,.section-info-2 aside h1,.section-info-2 p {
+    color: white;
+}
+
+/***********************
+        FOOTER
+***********************/
+
+footer {
+    background-color: #130739;
+    color: white;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+footer section {
+    flex: 1 1 300px;
+    max-width: 300px;
+    margin: 20px;
+}
+
+footer h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+footer form {
+    display: flex;
+    flex-direction: column;
+}
+
+footer label {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+footer textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+footer input[type="radio"],
+footer input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+footer select,
+footer input[type="password"],
+footer input[type="number"],
+footer input[type="tel"],
+footer input[type="search"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+footer input[type="submit"],
+footer input[type="reset"] {
+    background-color: #ff343c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+footer input[type="submit"]:hover,
+footer input[type="reset"]:hover {
+    background-color: #d63033;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer li {
+    margin-bottom: 10px;
+}
+
+footer p {
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+footer p:last-child {
+    margin-top: 0;
+}
+
+footer article {
+    flex: 1 1 300px;
+    max-width: 300px;
+    margin: 20px;
+}
+
+footer code {
+    background-color: #f0f0f0;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+footer sup {
+    font-size: 14px;
+    vertical-align: super;
+}
+
+footer sub {
+    font-size: 14px;
+    vertical-align: sub;
+}
+
+footer del {
+    text-decoration: line-through;
+}
