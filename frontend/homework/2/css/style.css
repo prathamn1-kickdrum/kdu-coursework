@@ -1,0 +1,89 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: whitesmoke;
+}
+
+.weather-container {
+  padding: 20px;
+  background-color: white;
+}
+
+.main-header h1 {
+  font-size: 5rem;
+  font-weight: 400;
+}
+.main-header p {
+  font-size: 1.7rem;
+  opacity: 50%;
+}
+
+img {
+  width: 8rem;
+  aspect-ratio: 1;
+}
+
+.weather-today {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.weather-today .temp-value {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+.weather-today .temp-value h2 {
+  font-weight: 400;
+  font-size: 5rem;
+  opacity: 80%;
+}
+.weather-today .temp-value h2 sup {
+  font-size: 1.7rem;
+  opacity: 50%;
+}
+.weather-today .weather-stats {
+  font-size: 1.7rem;
+  opacity: 50%;
+}
+
+.days-container {
+  margin-top: 2rem;
+}
+.days-container .days-list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+.day-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 auto;
+  width: calc(100% - 20px);
+}
+.day-item h3 {
+  font-size: 1.3rem;
+  opacity: 80%;
+}
+.day-item .temp-pollen-container {
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 1.3rem;
+  opacity: 50%;
+}
+.day-item .temp-pollen-container .temp-day {
+  width: 100%;
+  gap: 20%;
+  font-size: 1.7rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 400;
+}
+.day-item .temp-pollen-container .temp-day :not(:first-child) {
+  opacity: 80%;
+}/*# sourceMappingURL=style.css.map */
