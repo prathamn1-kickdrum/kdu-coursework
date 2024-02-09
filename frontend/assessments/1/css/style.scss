@@ -28,6 +28,11 @@ body,html {
     flex-direction: row;
     gap: 4rem;
 
+    .hamburger-icon {
+        width: 30px;
+        height: 30px;
+    }
+
     .navbar {
         position: absolute;
         display: none;
