@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.kdu.smarthome.utility.RequestBuilders.buildAddRoomRequest;
+@SuppressWarnings("all")
 
 public class RoomControllerTest {
 

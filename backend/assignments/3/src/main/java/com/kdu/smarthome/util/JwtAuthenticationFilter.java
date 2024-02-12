@@ -1,6 +1,5 @@
 package com.kdu.smarthome.util;
 
-import com.kdu.smarthome.exception.CustomException;
 import com.kdu.smarthome.service.JwtService;
 import com.kdu.smarthome.service.UserService;
 import lombok.NonNull;
@@ -21,13 +20,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Filter to handle JWT authentication.
+ */
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
+
     private final JwtService jwtService;
     private final UserService userService;
 
-
+    /**
+     * Filters the request to authenticate with JWT.
+     *
+     * @param request     HTTP servlet request.
+     * @param response    HTTP servlet response.
+     * @param filterChain Filter chain.
+     * @throws IOException      If an I/O exception occurs.
+     * @throws ServletException If a servlet exception occurs.
+     */
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,
                                     @NonNull HttpServletResponse response,
@@ -36,32 +47,32 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String jwtToken;
         final String username;
 
-        if(StringUtils.isEmpty(authHeader) || !StringUtils.startsWith(authHeader,"Bearer ")) {
-            if(!request.getRequestURI().startsWith("/api/v1/auth")) {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED,"unauthorized");
+        if (StringUtils.isEmpty(authHeader) || !StringUtils.startsWith(authHeader, "Bearer ")) {
+            if (!request.getRequestURI().startsWith("/api/v1/auth")) {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
                 return;
             }
-            filterChain.doFilter(request,response);
-            return ;
+            filterChain.doFilter(request, response);
+            return;
         }
         jwtToken = authHeader.substring(7);
-        if(jwtService.isTokenExpired(jwtToken)) {
-            response.sendError(HttpStatus.UNAUTHORIZED.value(),"Token expired.");
+        if (jwtService.isTokenExpired(jwtToken)) {
+            response.sendError(HttpStatus.UNAUTHORIZED.value(), "Token expired.");
             return;
         }
         username = jwtService.extractUserName(jwtToken);
-        if(StringUtils.isNoneEmpty(username) && SecurityContextHolder.getContext().getAuthentication()==null) {
+        if (StringUtils.isNoneEmpty(username) && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userService.userDetailsService().loadUserByUsername(username);
-            if(jwtService.isTokenValid(jwtToken, userDetails)) {
+            if (jwtService.isTokenValid(jwtToken, userDetails)) {
                 SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
                 UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-                        userDetails,null,userDetails.getAuthorities()
+                        userDetails, null, userDetails.getAuthorities()
                 );
                 token.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 securityContext.setAuthentication(token);
                 SecurityContextHolder.setContext(securityContext);
             }
         }
-        filterChain.doFilter(request,response);
+        filterChain.doFilter(request, response);
     }
 }

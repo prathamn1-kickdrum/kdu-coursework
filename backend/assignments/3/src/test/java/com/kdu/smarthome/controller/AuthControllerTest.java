@@ -13,6 +13,7 @@ import java.util.Map;
 
 import static com.kdu.smarthome.utility.RequestBuilders.buildUserRegistrationJson;
 
+@SuppressWarnings("all")
 public class AuthControllerTest {
 
     /**

@@ -19,6 +19,8 @@ import static com.kdu.smarthome.utility.RequestBuilders.buildAddUserToHouseReque
 import static com.kdu.smarthome.utility.RequestBuilders.buildHouseRequestJson;
 import static com.kdu.smarthome.utility.RequestBuilders.buildUpdateAddressRequest;
 
+@SuppressWarnings("all")
+
 
 public class HouseControllerTest {
 
@@ -41,7 +43,7 @@ public class HouseControllerTest {
             String userToken = (String) userData.get("token");
 
 
-            mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house/")
+            mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house")
                             .header("Authorization", "Bearer " + userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
@@ -64,7 +66,7 @@ public class HouseControllerTest {
      */
     public static void displayAllHousesWithInvalidAuth(MockMvc mockMvc) throws Exception {
         try {
-            mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house/")
+            mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house")
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isUnauthorized())
                     .andDo(result -> {
@@ -89,7 +91,7 @@ public class HouseControllerTest {
             Map<String, Object> userData = (Map<String, Object>) registeredUsersMap.get("user2");
             String userToken = (String) userData.get("token");
 
-            mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house/")
+            mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house")
                             .header("Authorization", "Bearer " + userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
@@ -112,7 +114,7 @@ public class HouseControllerTest {
      */
     public static void houseRegisterWithInvalidAuth(MockMvc mockMvc) throws Exception {
         try {
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house/")
+            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house")
                             .content(buildHouseRequestJson("houseTest", "addressTest"))
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isUnauthorized())
@@ -143,7 +145,7 @@ public class HouseControllerTest {
             Map<String, Object> userData = (Map<String, Object>) registeredUsersMap.get(username);
             String userToken = (String) userData.get("token");
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house/")
+            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house")
                             .content(buildHouseRequestJson(houseName, houseAddress))
                             // Add the Authorization header with the user token
                             .header("Authorization", "Bearer " + userToken)
@@ -332,7 +334,7 @@ public class HouseControllerTest {
             Map<String, Object> houseData = (Map<String, Object>) registeredHousesMap.get("user1");
             String houseId = houseData.get("id").toString();
 
-            mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/house/")
+            mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/house")
                             .header("Authorization", "Bearer " + userToken)
                             .content(buildUpdateAddressRequest("New Street 999"))
                             .param("houseId", houseId)
@@ -369,7 +371,7 @@ public class HouseControllerTest {
             Map<String, Object> userData = (Map<String, Object>) registeredUsersMap.get("user1");
             String userToken = (String) userData.get("token");
 
-            mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/house/")
+            mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/house")
                             .header("Authorization", "Bearer " + userToken)
                             .content(buildUpdateAddressRequest("New Street 999"))
                             .param("houseId", "invalidHouse")

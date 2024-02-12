@@ -1,12 +1,19 @@
 package com.kdu.smarthome.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class AddRoomRequest {
-    @JsonProperty("room_name")
+    @NotBlank
+    @NotEmpty
     private String roomName;
 }

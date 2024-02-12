@@ -1,5 +1,6 @@
 package com.kdu.smarthome.util;
 
+
 @SuppressWarnings("all")
 public enum ExceptionType {
     BadLoginCredentialsException,
@@ -18,5 +19,8 @@ public enum ExceptionType {
     RevokedToken,
 
     SavingHouseException,
+
+    NoUserWithSpecifiedRoleException,
+    InvalidDeviceException, InvalidDeviceCredentialException, DeviceNotRegisteredException, NoRoomInHouseException, InvalidUserProvidedToken, AuthenticationContextNullException
 
 }

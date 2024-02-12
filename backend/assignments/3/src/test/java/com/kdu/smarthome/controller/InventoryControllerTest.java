@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.kdu.smarthome.utility.RequestBuilders.buildInventoryCreateRequest;
+@SuppressWarnings("all")
 
 public class InventoryControllerTest {
 

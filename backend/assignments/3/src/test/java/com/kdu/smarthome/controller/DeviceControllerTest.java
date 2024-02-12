@@ -13,6 +13,7 @@ import java.util.Map;
 import static com.kdu.smarthome.utility.RequestBuilders.buildAddDeviceRequest;
 import static com.kdu.smarthome.utility.RequestBuilders.buildDeviceRegistrationRequest;
 
+@SuppressWarnings("all")
 public class DeviceControllerTest {
 
     /**

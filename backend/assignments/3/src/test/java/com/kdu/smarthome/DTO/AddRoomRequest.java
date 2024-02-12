@@ -7,6 +7,5 @@ import lombok.Data;
 @Data
 @Builder
 public class AddRoomRequest {
-    @JsonProperty("room_name")
     private String roomName;
 }

@@ -1,4 +1,84 @@
-Assignment 3
+# Assignment 3
+
+## SQL Script for Database Initialization
+
+```sql
+-- Table: devices 
+CREATE TABLE devices (
+    kickston_id VARCHAR(255) NOT NULL PRIMARY KEY,
+    device_password VARCHAR(255),
+    device_username VARCHAR(255),
+    manufacture_date_time VARCHAR(255),
+    manufacture_factory_place VARCHAR(255),
+    registered BOOLEAN NOT NULL,
+    room_id BIGINT,
+    CONSTRAINT fk89ytayyehi53yn26m30x8eg9r FOREIGN KEY (room_id) REFERENCES rooms
+);
+
+
+
+-- Table: houses 
+CREATE TABLE houses (
+    house_id BIGSERIAL PRIMARY KEY,
+    address VARCHAR(255),
+    house_admin VARCHAR(255),
+    house_name VARCHAR(255)
+);
+
+
+-- Table: kickston_sequence 
+CREATE TABLE kickston_sequence (
+    id BIGSERIAL PRIMARY KEY
+);
+
+ALTER TABLE kickston_sequence OWNER TO kdu;
+
+-- Table: rooms 
+CREATE TABLE rooms (
+    room_id BIGSERIAL PRIMARY KEY,
+    room_name VARCHAR(255),
+    house_id BIGINT,
+    CONSTRAINT fk8le2724arhisppb0tutvundby FOREIGN KEY (house_id) REFERENCES houses
+);
+
+
+
+-- Table: user_house 
+CREATE TABLE user_house (
+    user_id BIGINT NOT NULL,
+    house_id BIGINT NOT NULL,
+    PRIMARY KEY (user_id, house_id),
+    CONSTRAINT fkb4kfrhce78atg6ehcb933xhm2 FOREIGN KEY (user_id) REFERENCES users,
+    CONSTRAINT fksblbin2jikgqihrt01aor36jc FOREIGN KEY (house_id) REFERENCES houses
+);
+
+
+-- Table: users 
+CREATE TABLE users (
+    user_id BIGSERIAL PRIMARY KEY,
+    email VARCHAR(255),
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    name VARCHAR(255),
+    password VARCHAR(255),
+    role VARCHAR(255),
+    username VARCHAR(255)
+);
+
+
+-- Sequences 
+CREATE SEQUENCE houses_house_id_seq;
+ALTER SEQUENCE houses_house_id_seq OWNED BY houses.house_id;
+
+CREATE SEQUENCE kickston_sequence_id_seq;
+ALTER SEQUENCE kickston_sequence_id_seq OWNED BY kickston_sequence.id;
+
+CREATE SEQUENCE rooms_room_id_seq;
+ALTER SEQUENCE rooms_room_id_seq OWNED BY rooms.room_id;
+
+CREATE SEQUENCE users_user_id_seq;
+ALTER SEQUENCE users_user_id_seq OWNED BY users.user_id;
+```
 
 API contracts are as follows:
 
@@ -391,6 +471,7 @@ This API endpoint is used to add a device to a house.
     - **Body:**
         - `message` (Type: String) - An error message describing the issue.
         - `httpStatus` (Type: HttpStatus) - HTTP status of the response.
+
 
 
 

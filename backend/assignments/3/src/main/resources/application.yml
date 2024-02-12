@@ -6,7 +6,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -17,12 +17,17 @@ spring:
   devtools:
     restart:
       enabled: true
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
 logging:
   level:
     root: ERROR
-    org.springframework: ERROR
-    com.kdu.smarthome: DEBUG
-    org.hibernate.SQL: DEBUG
+    org.springframework: error
+    com.kdu.smarthome: trace
+    org.hibernate.SQL: trace
     org.hibernate.type.descriptor.sql: TRACE
+
 
 
