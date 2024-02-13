@@ -13,7 +13,7 @@ module.exports = defineConfig({
   // Configuration for end-to-end (e2e) tests
   e2e: {
     // Base URL for your application
-    baseUrl: "http://localhost:5500/assignments/assignment-1/twitter-client",
+    baseUrl: "http://localhost:5500/Twitter-X/",
 
     // Setup Node events for visual regression testing using cypress-visual-regression plugin
     setupNodeEvents(on, config) {
