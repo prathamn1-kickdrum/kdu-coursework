@@ -1,0 +1,19 @@
+{
+  "name": "1",
+  "version": "1.0.0",
+  "description": "Twitter UI Clone",
+  "source": "Twitter-X/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "keywords": [],
+  "author": "Pratham Nagaria",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.11.0",
+    "cypress": "^13.6.3",
+    "cypress-visual-regression": "^3.0.0",
+    "parcel": "^2.11.0"
+  }
+}
