@@ -51,4 +51,13 @@ const getPostDetailAction = async (req, res) => {
     }
 }
 
-module.exports = { createPostAction, getAllPostsAction, getPostDetailAction };
+const deletePostAction = async (req, res) => {
+    const postId = req.params.postId;
+    if (!postRepository.deletePost(postId)) {
+        return res.status(400).json({ message: `No post present with id: ${postId}` });
+    } else {
+        return res.status(200).json({ message: "Post deleted successfully"});
+    }
+}
+
+module.exports = { createPostAction, getAllPostsAction, getPostDetailAction, deletePostAction };
