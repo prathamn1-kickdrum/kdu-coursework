@@ -10,8 +10,8 @@
     <script defer src="./script.js"></script>
   </head>
   <body>
-    <main class="main_wrapper">
-      <button id="tweet-fob" class="floating-msg-icon">
+    <main class="main-container">
+      <button id="tweet-fob" class="floating-tweet-box-icon">
         <img src="./assets/fob.svg" alt="Floating Action" />
       </button>
 
@@ -116,7 +116,7 @@
               <p>@nit_hck</p>
             </div>
 
-            <div class="follower_info">
+            <div class="follower-info">
               <p><span>1</span> Follower</p>
               <p><span>0</span> Following</p>
             </div>
@@ -135,35 +135,35 @@
         </section>
       </section>
 
-      <section class="post_section">
-        <section class="msg">
-          <div class="mobile-nav-actions">
+      <section class="post-section">
+        <section class="tweet-box">
+          <div class="mobile-nav-ops">
             <img src="./assets/back.svg" alt="Back" />
 
             <p>Drafts</p>
           </div>
 
           <img
-            class="msg-profile"
+            class="tweet-box-profile"
             src="./assets/profile-pic.png"
             alt=""
           />
 
-          <div class="msg-input">
+          <div class="tweet-box-input post-input">
             <input
               id="tweet-input"
               type="text"
               placeholder="What is happening?!"
             />
 
-            <div class="msg-mobile-action">
+            <div class="tweet-box-mobile-ops">
               <img src="./assets/world.svg" alt="Everyone" />
               <p>Everyone can reply</p>
             </div>
 
-            <div class="msg-actions">
-              <div class="msg-actions_mobile"></div>
-              <div class="msg-icons">
+            <div class="tweet-box-ops">
+              <div class="tweet-box-ops-mobile"></div>
+              <div class="tweet-box-icons">
                 <img src="./assets/image.svg" alt="Add Image" />
                 <img src="./assets/gif.svg" alt="Add GIF" />
                 <img src="./assets/poll.svg" alt="Add Poll" />
@@ -174,7 +174,7 @@
 
               <button
                 id="tweet-btn"
-                class="msg-button--primary"
+                class="tweet-box-button--primary"
                 disabled
               >
                 Post
@@ -183,7 +183,7 @@
           </div>
         </section>
 
-        <section id="post-wrapper" class="post_section-wrapper">
+        <section id="post-container" class="post-section-container">
           <div class="posts">
             <img class="posts-profile" src="./assets/profile-pic.png" alt="" />
 
@@ -202,12 +202,12 @@
                 <span>#Coding</span>
               </div>
 
-              <div class="posts-actions">
+              <div class="post-ops">
                 <img src="./assets/comment.svg" alt="Comment" />
                 <img src="./assets/retweet.svg" alt="Retweet" />
-                <div class="like-button-wrapper">
+                <div class="like-button-container">
                   <svg
-                    class="like-button"
+                    class="like-button like-post unlike-post"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
