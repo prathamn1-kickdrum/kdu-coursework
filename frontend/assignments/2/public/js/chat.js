@@ -60,7 +60,7 @@ function populateMessageContainer(messageData) {
   sendBtn.addEventListener("click", () => {
     if (messageInput.value.length === 0) return;
 
-    socket.emit("sendMessage", {
+    socket.emit("message", {
       id: activeChatId,
       username,
       content: messageInput.value,
@@ -79,7 +79,7 @@ function populateMessageContainer(messageData) {
 function setActiveChat(socketId) {
   activeChatId = socketId;
   console.log("Current Active Chat ID - " + activeChatId);
-  socket.emit("chatOpen", { socketId, username });
+  socket.emit("msg", { socketId, username });
 }
 
 function populateUser(userData) {
@@ -143,18 +143,18 @@ function populateProfileInfo(profileData) {
 }
 
 async function onLoad() {
-  socket.emit("joinRoom", { username });
+  socket.emit("enter", { username });
 
   const res = await fetch(`http://localhost:8000/api/v1/user/${username}`);
 
   const data = await res.json();
 
   populateProfileInfo(data);
-  socket.emit("messagePage");
+  socket.emit("chat");
   console.log("Socket id of " + username + " - " + socket.id);
 }
 
-socket.on("activeUsers", (payload) => {
+socket.on("current", (payload) => {
   const elementsToRemove = activeUserContainer.querySelectorAll("." + "user");
 
   if (elementsToRemove.length !== 0) {
@@ -170,13 +170,13 @@ socket.on("activeUsers", (payload) => {
   activeUsers = payload;
 });
 
-socket.on("chatDetails", (payload) => {
+socket.on("data", (payload) => {
   console.log(payload);
   mainMessageDiv.innerHTML = "";
   populateMessageContainer(payload);
 });
 
-socket.on("updateChatDetails", (payload) => {
+socket.on("refresh", (payload) => {
   if (payload.otherId == activeChatId) {
     mainMessageDiv.innerHTML = "";
     populateMessageContainer({
