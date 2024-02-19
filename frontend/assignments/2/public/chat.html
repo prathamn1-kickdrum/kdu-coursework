@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/chat.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.2/qs.min.js"
+      integrity="sha512-vCegEXqPUYpZsTGz2lk0jaQ1psxtFeniVJACAXhMVxuoYa/N4nZkjoVFOxLwP7uGeQOoemiz7DQrIpRTj4IBPw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="./js/chat.js"></script>
+    <title>Messages</title>
+  </head>
+  <body>
+    <nav class="menu-container">
+      <img class="menu-container-logo" src="./assets/logo.svg" alt="X Logo" />
+
+      <button class="menu-item">
+        <img src="./assets/home.svg" alt="Home" />
+        <p>Home</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/search.svg" alt="Explore" />
+        <p>Explore</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/notification.svg" alt="Notificaions" />
+        <p>Notifications</p>
+      </button>
+
+      <button id="message" class="menu-item">
+        <img src="./assets/message.svg" alt="Messages" />
+        <p>Messages</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/grok.svg" alt="Grok" />
+        <p>Grok</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/list.svg" alt="List" />
+        <p>List</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/logo.svg" alt="Premium" />
+        <p>Premium</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/person.svg" alt="Profile" />
+        <p>Profile</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/more.svg" alt="More" />
+        <p>More</p>
+      </button>
+
+      <button class="menu-container-post-button">Post</button>
+
+      <section class="menu-container-profile-info"></section>
+    </nav>
+
+    <main class="main">
+      <section class="main-users">
+        <h2>Messages</h2>
+      </section>
+
+      <section class="main-messages"></section>
+    </main>
+  </body>
+</html>
