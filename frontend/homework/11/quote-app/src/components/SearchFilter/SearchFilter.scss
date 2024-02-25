@@ -1,0 +1,22 @@
+@import '../Quote/Quote.scss';
+
+.search-filter-container {
+
+    .filter-heading {
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .search-tags-container {
+        min-height: 4rem;
+        @include tagsMixin;
+    }
+
+    .partition-line {
+        height: 3px;
+        background-color: black;
+        margin-bottom: 3rem;
+    }
+
+    
+}

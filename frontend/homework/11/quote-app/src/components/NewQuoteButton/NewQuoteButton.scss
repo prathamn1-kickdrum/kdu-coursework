@@ -1,0 +1,33 @@
+.new-quote-button-container {
+    
+    margin-bottom: 2rem;
+
+    .quote-button {
+        background-color: rgb(255, 227, 202);
+        padding: 1.5rem 2rem;
+        border: none;
+        margin: 0 1rem;
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #0D369E;
+        }
+
+        .button-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .spinner {
+                width: 40px;
+            }
+        }
+    }
+
+    .quote-button:disabled {
+        background-color: rgba(255, 227, 202,0.5);
+        cursor:wait;
+    }
+}
