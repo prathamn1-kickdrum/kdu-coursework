@@ -1,0 +1,41 @@
+.add-ons-section {
+    flex-grow: 1;
+}
+
+.add-on-outer-container {
+    margin-top: 2rem;
+    padding: 0 1rem;
+    p {
+        font-size: 1.5rem;
+    }
+
+    .main-add-on-container {
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 1rem;
+
+        .add-on-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background-color: #e9f6ff;
+
+            input {
+                aspect-ratio: 1;
+                width: 1.5rem;
+            }
+            label {
+                color: #280274;
+                font-size: 1.2rem;
+            }
+
+        }
+    }
+
+
+
+}
