@@ -1,0 +1,15 @@
+button {
+    padding: 1rem;
+    background-color: rgb(240, 138, 93);
+    border: none;
+    p {
+        font-size: 1.5rem;
+        color: white;
+        font-weight: 700;
+    }
+}
+
+button:disabled {
+    background-color: rgb(240, 138, 93);
+    opacity: 0.2;
+}
