@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.2/qs.min.js"
+      integrity="sha512-vCegEXqPUYpZsTGz2lk0jaQ1psxtFeniVJACAXhMVxuoYa/N4nZkjoVFOxLwP7uGeQOoemiz7DQrIpRTj4IBPw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="./js/index.js"></script>
+    <title>Homepage</title>
+  </head>
+  <body>
+    <nav class="menu-container">
+      <img class="menu-container-logo" src="./assets/logo.svg" alt="X Logo" />
+
+      <button class="menu-item">
+        <img src="./assets/home.svg" alt="Home-svg-icon" />
+        <p>Home</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/search.svg" alt="Explore-svg-icon" />
+        <p>Explore</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/notification.svg" alt="Notificaions-svg-icon" />
+        <p>Notifications</p>
+      </button>
+
+      <button id="message" class="menu-item">
+        <img src="./assets/message.svg" alt="Messages-svg-icon" />
+        <p>Messages</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/grok.svg" alt="Grok-svg-icon" />
+        <p>Grok</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/list.svg" alt="List-svg-icon" />
+        <p>List</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/logo.svg" alt="Premium-svg-icon" />
+        <p>Premium</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/person.svg" alt="Profile-svg-icon" />
+        <p>Profile</p>
+      </button>
+
+      <button class="menu-item">
+        <img src="./assets/more.svg" alt="More-svg-icon" />
+        <p>More</p>
+      </button>
+
+      <button class="menu-container-post-button">Post</button>
+
+      <section class="menu-container-profile-info"></section>
+    </nav>
+
+    <main class="main">
+      <section class="main-tweetbox">
+        <img
+          id="tweetbox_image"
+          class="menu-container-profile-pic"
+          src="https://source.unsplash.com/random/300×300"
+          alt="Profile Image"
+        />
+
+        <div class="main-tweet-input">
+          <input
+            id="post-input"
+            type="text"
+            placeholder="What is happening?!"
+          />
+          <div class="main-tweet-actions">
+            <label for="mediaInput">
+              <img
+                class="svg-icons-post"
+                src="./assets/image.svg"
+                alt="media svg"
+              />
+            </label>
+            <input
+              type="file"
+              id="mediaInput"
+              style="display: none"
+              accept="image/*, video/*"
+            />
+            <img src="./assets/gif.svg" alt="Gif" />
+            <img src="./assets/poll.svg" alt="Poll" />
+            <img src="./assets/emoji.svg" alt="Emoji" />
+            <img src="./assets/schedule.svg" alt="Schedule" />
+            <img src="./assets/location.svg" alt="Location" />
+
+            <button id="post-button" class="main-post-button">Post</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="posts"></section>
+    </main>
+
+    <button class="fab">
+      <img src="./assets/fob.svg" alt="Action Btn" />
+    </button>
+  </body>
+</html>
