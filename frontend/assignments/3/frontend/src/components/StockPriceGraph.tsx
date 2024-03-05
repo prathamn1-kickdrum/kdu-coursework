@@ -89,12 +89,13 @@ const StockPrice = styled.div<{ $change: StockChangeType; }>`
 
 const StockInput = styled.div`
     border: 1px solid black;
-    flex-grow: 1;
+    flex-grow: 0.7;
     display: flex;
     align-items: center;
     justify-content: center;
 
     input {
+        font-size: 1.2rem;
         width: 100%;
         text-align: center;
     }
@@ -138,22 +139,25 @@ const historyProp = (props: IType) => {
 const StockAction = styled.div<Props>`
   display: flex;
   align-items: center;
-  width: 50px;
+  width: 80px;
   justify-content: center;
   cursor: pointer;
   ${actionProp}
 `;
 
 const StockHistoryWrapper = styled.div`
-    flex-basis: 25%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    width: 60%;
+    grid-template-rows: 1fr 1fr;
     gap: 15px;
 `
 
 const StockHistory = styled.div`
     border: 1px solid black;
+    width: 100%;
     padding: 10px;
+    overflow: scroll;
+    height: 390px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -189,6 +193,9 @@ const StockTransactions = styled.div`
     padding: 10px;
     display: flex;
     flex-direction: column;
+    height: 390px;
+    overflow-y: scroll;
+    width: 100%;
     gap: 10px;
 `
 
@@ -204,15 +211,18 @@ const StockTransaction = styled.div`
 
 const StockGraphContainer = styled.div`
     position: relative;
+    height: 700px;
+    width: fit-content;
 `
 
 const StockGraph = styled.div`
+    padding: 0.15rem;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
-    height: 500px;
-    max-width: 1020px;
+    height: 700px;
+    max-width: 1365px;
     display: flex;
     align-items: flex-end;
 `

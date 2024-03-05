@@ -20,7 +20,7 @@ const StockList = styled.ul<{ open: boolean }>`
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%;
+  width:100%;
   max-height: 200px;
   z-index: 2;
   overflow-y: auto;
@@ -34,7 +34,6 @@ const StockList = styled.ul<{ open: boolean }>`
   border-radius: 10px;
   border: 1px solid black;
   display: ${(props) => (props.open ? 'block' : 'none')};
-
   &::-webkit-scrollbar {
   display: none;
 }

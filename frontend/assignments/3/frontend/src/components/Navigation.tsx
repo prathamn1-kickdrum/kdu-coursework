@@ -111,7 +111,7 @@ const grey = {
 const Listbox = muiStyled('ul')(
     ({ theme }) => `
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 0.875rem;
+  font-size: 1rem;
   box-sizing: border-box;
   padding: 6px;
   margin: 12px 0;
@@ -156,7 +156,7 @@ const MenuButton = muiStyled(BaseMenuButton)(
     ({ theme }) => `
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.5;
   padding: 8px 16px;
   border-radius: 8px;

@@ -18,7 +18,7 @@ interface ChangingButtonProps {
 
 const AddRemoveWatchButton = ({ index, wishlist, page }: Readonly<ChangingButtonProps>) => {
     const dispatch = useDispatch();
-    const [wishlistChild, setWishlistChild] = useState<React.ReactNode>(<ToggleWishlist color='primary' />)
+    const [wishlistChild, setWishlistChild] = useState<React.ReactNode>(<ToggleWishlist color='primary' fontSize="large" />)
 
 
     function removeWishlistState(index: number) {
@@ -39,25 +39,25 @@ const AddRemoveWatchButton = ({ index, wishlist, page }: Readonly<ChangingButton
     }
 
     function handleMouseEnter() {
-        setWishlistChild(<CancelIcon color='error' />)
+        setWishlistChild(<CancelIcon color='error' fontSize="large" />)
     }
 
     function handleMouseLeave() {
-        setWishlistChild(<ToggleWishlist color='primary' />)
+        setWishlistChild(<ToggleWishlist color='primary' fontSize="large" />)
     }
 
     return (
-        <>
+        <div>
             {
                 wishlist ?
                     <Item onClick={() => removeWishlistState(index)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                         {wishlistChild}
                     </Item> :
                     <Item onClick={() => addWishlistState(index)}>
-                        <AddCircleOutlineIcon color='primary' />
+                        <AddCircleOutlineIcon color='primary' fontSize="large" />
                     </Item>
             }
-        </>
+        </div>
     )
 } 
 

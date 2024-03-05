@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(6, 170px);
-  grid-template-rows: repeat(4, 125px);
+  grid-template-columns: repeat(8, 170px);
+  grid-template-rows: repeat(8, 175 px);
   margin-bottom: 30px;
   border: 2px solid black;
+  height: 700px;
 `;
 
 const GridCell = styled.div`

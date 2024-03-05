@@ -12,16 +12,24 @@ import { groupSortAndSortNewestFirst } from "../utils/TransactionFilter";
 import { v4 as uuidv4 } from "uuid";
 
 const TransactionContainerStyled = styled.div`
-    max-width: 1200px;
+    max-width: 1500px;
+    padding: 1rem;
     margin: 30px auto;
     display: flex;
     gap: 40px;
-
+    overflow-y: auto; /* change to auto to let the browser handle the scrollbar */
+    height: 800px;
+    scrollbar-width: none; /* for Firefox */
+    -ms-overflow-style: none; /* for IE and Edge */
+    &::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for WebKit browsers */
+    }
     @media (max-width: 560px) {
         flex-wrap: wrap;
         padding-inline: 20px;
     }
 `;
+
 
 const FilterWrapper = styled.div`
     flex-basis: 30%;
@@ -314,6 +322,7 @@ const TransactionList = () => {
                                 key={uuidv4()}
                                 control={<Checkbox />}
                                 label={`${item}`}
+                            
                             />
                         ))}
                     </FormGroup>
