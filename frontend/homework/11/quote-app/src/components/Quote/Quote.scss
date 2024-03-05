@@ -1,0 +1,40 @@
+@mixin tagsMixin {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+
+.quote-container {
+    border-radius: 2rem;
+    padding: 2rem;
+    background-color: #0d369e;
+    .data-container {
+        color: white;
+        .content {
+            text-align: center;
+        }
+    }
+    .metadata-container {
+        color: white;
+        .author {
+            text-align: right;
+            opacity: 0.7;
+            font-weight: 900;
+            font-size: 1.4rem;
+        }
+        .date {
+            text-align: right;
+            opacity: 0.6;
+            font-weight: 400;
+            font-size: 1.2rem;
+        }
+    }
+    .tags-container {
+        @include tagsMixin;
+    }
+
+    > div:not(:last-child) {
+        margin-bottom: 2rem; /* Adjust the margin-bottom value as needed */
+    }
+}
