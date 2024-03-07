@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/demo
+    username: kdu
+    password: openpsql
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        format_sql: true
+    show-sql: true
+  jwt:
+    secret: F8C4XTMy7zzFh03AbcwKKMStkxZ8YnVf
+  devtools:
+    restart:
+      enabled: true
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
+logging:
+  level:
+    root: ERROR
+    org.springframework: error
+    com.kdu.smarthome: trace
+    org.hibernate.SQL: trace
+    org.hibernate.type.descriptor.sql: TRACE
+
+
+
