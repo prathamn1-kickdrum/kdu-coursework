@@ -1,0 +1,103 @@
+@import "variables";
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: whitesmoke
+}
+
+
+.weather-container {
+    padding: 20px;
+    background-color: white;
+    
+}
+
+.main-header {
+    h1 {
+        font-size: $fs-large;
+        font-weight: 400;
+    }
+    p {
+        font-size: $fs-medium;
+        opacity: $opacity-light;
+    }
+}
+
+img {
+    width: 8rem;
+    aspect-ratio: 1;
+}
+
+
+
+.weather-today {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    .temp-value {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        h2 {
+            font-weight: 400;
+            font-size: $fs-large;
+            opacity: $opacity-medium;
+
+            sup {
+                font-size: $fs-medium;
+                opacity: $opacity-light;
+            }
+        }
+    }
+    .weather-stats{
+        font-size: $fs-medium;
+        opacity: $opacity-light;
+        
+    }
+}
+
+.days-container {
+    margin-top: 2rem;
+    .days-list {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        justify-content: flex-start;
+        padding: 0;
+    }
+
+}
+
+.day-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 auto;
+    width: calc(100% - (2 * 10px));
+
+    h3 {
+        font-size: $fs-small;
+        opacity: $opacity-medium;
+    }
+    .temp-pollen-container {
+        width: max-content;
+        font-size: $fs-small;
+        opacity: $opacity-light;
+        .temp-day {
+            width: 100%;
+            gap: 20%;
+            font-size: $fs-medium;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            font-weight: 400;
+            :not(:first-child) {
+                opacity: $opacity-medium;
+            }
+        }
+    }
+
+    
+}
+
