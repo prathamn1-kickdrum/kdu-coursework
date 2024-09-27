@@ -1,0 +1,29 @@
+.outer-container {
+  background-color: #ffec99;
+  border: 1px solid black;
+  padding: 4rem;
+}
+.outer-container .info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  font-style: italic;
+  gap: 0.5rem;
+}
+.outer-container .bio-container {
+  display: flex;
+  flex-direction: row;
+  gap: 6rem;
+}
+.outer-container .bio-container .skill-container {
+  border: 2px solid #dd9f40;
+  background-color: #a5d8ff;
+  flex-grow: 1;
+  aspect-ratio: 1.5;
+}
+.outer-container .bio-container .hobby-container {
+  border: 2px solid #dd9f40;
+  flex-grow: 1;
+  background-color: #b2f2bb;
+}/*# sourceMappingURL=Outer.css.map */

@@ -1,0 +1,14 @@
+.bio-title {
+  color: #f08c03;
+  padding: 1rem 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+.bio-items {
+  padding: 3rem;
+}
+.bio-items h2 {
+  color: #2f9e44;
+}/*# sourceMappingURL=Inner.css.map */
