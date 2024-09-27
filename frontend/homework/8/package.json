@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "axios": "^1.6.7",
+    "nodemon": "^3.0.3",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "cross-fetch": "^4.0.0",
+    "fetch": "^1.1.0",
+    "node-fetch": "^3.3.2"
+  }
+}
